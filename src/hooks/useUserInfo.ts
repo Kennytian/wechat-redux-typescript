@@ -1,12 +1,9 @@
 import * as React from 'react';
-
-interface ResponseProps {
-  detail: Record<string, any>;
-}
+import { UserInfoProps } from "@/interface";
 
 export default function useUserInfo() {
-  const [userInfo, setUserInfo] = React.useState(null);
-  function login(response: ResponseProps) {
+  const [userInfo, setUserInfo] = React.useState();
+  function login(response: UserInfoProps) {
     const { userInfo } = response.detail;
     userInfo.avatar = userInfo.avatarUrl;
     setUserInfo(response.detail.userInfo);

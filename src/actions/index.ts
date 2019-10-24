@@ -2,7 +2,7 @@ let nextTodoId = 4;
 
 export const addTodo = (text: string) => ({
   type: 'ADD_TODO',
-  id: nextTodoId++,
+  id: nextTodoId += 1,
   text,
 });
 

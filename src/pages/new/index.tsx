@@ -6,7 +6,11 @@ import AddButton from '@/components/AddButton';
 import { addTodo } from '@/actions';
 import './index.css';
 
-const NewPage = ({ dispatch }: any) => {
+interface PageProps {
+  dispatch: Function;
+}
+
+const NewPage = ({ dispatch }: PageProps) => {
   const [text, setText] = React.useState('');
 
   const handleAdd = () => {

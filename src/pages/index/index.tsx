@@ -16,16 +16,28 @@ import AddButton from '@/components/AddButton';
 import LoginButton from '@/components/LoginButton';
 import { toggleTodo } from '@/actions';
 import logo from '@/assets/logo.png';
+import { TodoProps } from "@/interface";
 import './index.css';
 
-const IndexPage = ({ todos, dispatch }:any) => {
+interface PageProps {
+  todos: TodoProps[];
+  dispatch: Function;
+  [otherProps: string]: any;
+}
+
+interface StateProps {
+  todos: TodoProps[];
+  [otherProps: string]: any;
+}
+
+const IndexPage = ({ todos, dispatch }: PageProps) => {
   const [user, login] = useUserInfo();
 
   const handleAdd = () => {
     navigateTo({ url: '../new/index' });
   };
 
-  const handleToggle = todo => () => {
+  const handleToggle = (todo: TodoProps) => () => {
     dispatch(toggleTodo(todo.id));
   };
 
@@ -46,7 +58,7 @@ const IndexPage = ({ todos, dispatch }:any) => {
 
       <View className="todo-items">
         <CheckboxGroup className="todo-items-group">
-          {todos.map(todo => (
+          {todos.map((todo: TodoProps) => (
             <Label
               onClick={handleToggle(todo)}
               key={todo.id}
@@ -56,7 +68,7 @@ const IndexPage = ({ todos, dispatch }:any) => {
             >
               <Checkbox
                 className="todo-item-checkbox"
-                value={todo.id}
+                value={`${todo.id}`}
                 checked={todo.completed}
               />
               <Text className="todo-item-text">{todo.text}</Text>
@@ -72,7 +84,7 @@ const IndexPage = ({ todos, dispatch }:any) => {
   );
 };
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: StateProps) => ({
   todos: state.todos,
 });
 

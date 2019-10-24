@@ -4,8 +4,8 @@ import { TouchEvent } from "remax/esm/adapters/wechat/components/baseTyping";
 import './index.css';
 
 interface Props {
-  text: string,
-  onClick?: (event: TouchEvent) => void,
+  text: string;
+  onClick?: (event: TouchEvent) => void;
 }
 
 const AddButton = ({ onClick, text }: Props) => {

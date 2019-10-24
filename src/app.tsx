@@ -7,7 +7,11 @@ import './app.css';
 
 const store = createStore(rootReducer);
 
-const App = ({ children }: any) => {
+interface PageProps {
+  children: React.ReactNode;
+}
+
+const App = ({ children }: PageProps) => {
   return <Provider store={store}>{children}</Provider>;
 };
 
